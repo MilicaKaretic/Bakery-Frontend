@@ -21,7 +21,7 @@ class App extends Component {
       <div>
         <Header as='h2'>
           <Icon name='users' />
-          <Header.Content>Admins</Header.Content>
+          <Header.Content>Adminssss</Header.Content>
         </Header>
         <List>
           {this.state.values.map((value: any) => (
