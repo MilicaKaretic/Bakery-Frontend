@@ -27,8 +27,8 @@ class DeliveryStore {
           deliveriesResult.status === "fulfilled" &&
           productsResult.status === "fulfilled" &&
           marketplacesResult.status === "fulfilled" &&
-          employeesResult.status == "fulfilled" &&
-          deliverersResult.status == "fulfilled"
+          employeesResult.status === "fulfilled" &&
+          deliverersResult.status === "fulfilled"
         ) {
           this.productNameRecord = new Map(
             productsResult.value.data.map(({ ProductID, ProductName }) => [

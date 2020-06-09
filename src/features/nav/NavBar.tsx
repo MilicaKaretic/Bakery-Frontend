@@ -20,7 +20,7 @@ const NavBar: React.FC = () => {
         <Dropdown item text="Deliveries">
           <Dropdown.Menu>
             <Dropdown.Item name="Deliveries" as={NavLink} to="/deliveries">
-              All Books
+              All Deliveries
             </Dropdown.Item>
 
             {/* <Dropdown.Item   as={NavLink} to='/createBook'>Create New Book</Dropdown.Item> */}

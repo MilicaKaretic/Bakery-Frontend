@@ -11,7 +11,7 @@ export interface IDeliveryDTO {
   
   export type Product = {
     ProductID: number;
-    ProductName?: string;
+    ProductName: string;
   };
   export type Deliverer = {
     DelivererID: number;

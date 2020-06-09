@@ -21,7 +21,6 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
 
   const [delivery, setDelivery] = useState<IDeliveryDTO>(initialFormState);
   const [errorDeliveryQuantity, setErrorDeliveryQuantity] = useState(false);
-  const [uniqueError, setUniqueError] = useState(false);
   const [productRequiredError, setProductRequiredError] = useState(false);
   const [employeeRequiredError, setEmployeeRequiredError] = useState(false);
   const [delivererRequiredError, setDelivererRequiredError] = useState(false);
@@ -51,7 +50,7 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
       setMarketplaceRequiredError(true);
     }
 
-    const formValid = !uniqueError && productValid && employeeValid && deliveryQuantityValid && delivererValid && marketplaceValid;
+    const formValid =  productValid && employeeValid && deliveryQuantityValid && delivererValid && marketplaceValid;
 
     if (formValid) {
       editDelivery({
@@ -65,21 +64,6 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
     }
   };
 
-  /*const handleUniqueError = (valueID: number, valueTitle: string) => {
-    const existingBook = booksDTO.find(
-      (b) => valueID === b.Writer.WriterID && valueTitle === b.Title
-    );
-    if (existingBook?.BookID !== book.BookID) {
-      if (existingBook !== undefined) {
-        setUniqueError(true);
-      } else {
-        setUniqueError(false);
-      }
-    }
-
-    //validation bug
-  }; */
-
   const handleInputChange = (event: FormEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget;
     if (name === "DeliveryQuantity") {
@@ -88,9 +72,6 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
       } else {
         setErrorDeliveryQuantity(false);
       }
-      /*if (writerRequiredError === false) {
-        handleUniqueError(+book.Writer.WriterID, value);
-      }*/
       if (value === "") {
         setDeliveryQuantityRequiredError(true);
       } else {
@@ -102,14 +83,11 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
 
   const handleChangeProduct = (e: any, result: any) => {
     const { value } = result;
-    /*if (book.Title !== "") {
-      handleUniqueError(value, book.Title);
-    }*/
     setProductRequiredError(false);
 
     setDelivery({
       ...delivery,
-      Product: { ProductID: value },
+      Product: { ProductID: value, ProductName:value },
     });
   };
   const handleChangeEmployee = (e: any, result: any) => {
@@ -176,7 +154,7 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
               pointing
               color="red"
               //style={{ marginBottom: 5 }}
-              content="DeliveryQuantity is too long"
+              content="Delivery Quantity is too long"
             />
           )}
           {deliveryQuantityRequiredError && (
@@ -184,18 +162,13 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
               basic
               color="red"
               pointing
-              content="Please add DeliveryQuantity"
+              content="Please add Delivery Quantity"
               style={{ marginBottom: 10 }}
             />
           )}
         </Form.Field>
-        {/*     <Form.Input
-          label="Number of available copies"
-          placeholder="1"
-          value={book?.NumberOfAvailable}
-          readOnly={true}
-          style={{ opacity: 0.7 }}
-        /> */}
+        {}
+        
         <Form.Field
           label="Product *"
           name="Product"
@@ -203,20 +176,10 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
           control={Dropdown}
           selection
           placeholder="Product"
-          //value={book.Writer}
           options={optionsProduct}
           onChange={handleChangeProduct}
           defaultValue={delivery.Product.ProductID}
         />
-        {uniqueError && (
-          <Label
-            basic
-            color="red"
-            pointing
-            content="Book with given title and writer already exists"
-            style={{ marginBottom: 10 }}
-          />
-        )}
         {productRequiredError && (
           <Label
             basic
@@ -233,7 +196,6 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
           control={Dropdown}
           selection
           placeholder="Employee"
-          //value={book.Genre}
           options={optionsEmployee}
           onChange={handleChangeEmployee}
           defaultValue={delivery.Employee.EmployeeID}
@@ -254,7 +216,6 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
           control={Dropdown}
           selection
           placeholder="Deliverer"
-          //value={book.Genre}
           options={optionsDeliverer}
           onChange={handleChangeDeliverer}
           defaultValue={delivery.Deliverer.DelivererID}
@@ -275,7 +236,6 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
           control={Dropdown}
           selection
           placeholder="Marketplace"
-          //value={book.Genre}
           options={optionsMarketplace}
           onChange={handleChangeMarketplace}
           defaultValue={delivery.Marketplace.MarketplaceID}
@@ -297,7 +257,6 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
             type="submit"
             content="Save"
             disabled={
-              uniqueError ||
               errorDeliveryQuantity ||
               productRequiredError ||
               employeeRequiredError ||
@@ -306,12 +265,7 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
               marketplaceRequiredError
             }
           />
-          {/*     <Button
-            style={{ width: "50%" }}
-            onClick={() => cancelEditFormOpen()}
-            type="button"
-            content="Cancel"
-          /> */}
+          {}
         </div>
       </Form>
     </Segment>
