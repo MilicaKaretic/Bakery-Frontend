@@ -13,6 +13,9 @@ const NotFound = () => {
         <Button as={Link} to="/deliveries" primary>
           Return to Deliveries page
         </Button>
+        <Button as={Link} to="/purchases" primary>
+          Return to Purchases page
+        </Button>
       </Segment.Inline>
     </Segment>
   );

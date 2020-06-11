@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { IDelivery } from "../models/Delivery/delivery";
 import { IDeliveryPost } from "../models/Delivery/deliveryPost";
+import { IPurchasePost } from "../models/Purchase/purchasePost";
 import { IEmployee } from "../models/Employee/employee";
 import { IDeliverer } from "../models/Deliverer/deliverer";
 import { IProduct } from "../models/Product/product";
@@ -8,6 +9,9 @@ import { IMarketplace } from "../models/Marketplace/marketplace";
 import allSettled from "promise.allsettled";
 import { history } from "../..";
 import { toast } from "react-toastify";
+import { IPurchase } from "../models/Purchase/purchase";
+import { IMaterial } from "../models/Material/material";
+import { ISupplier } from "../models/Supplier/supplier";
 
 axios.defaults.baseURL = "http://localhost:8081/api";
 
@@ -72,6 +76,35 @@ const Deliveries = {
   delete: (id: number) => requests.delete(`/deliveries/${id}`),
 };
 
+const Purchases = {
+  list: () => {
+    const purchasesPath = "http://localhost:8081/api/purchases";
+    const employeesPath = "http://localhost:8081/api/employees";
+    const materialsPath = "http://localhost:8081/api/materials";
+    const suppliersPath = "http://localhost:8081/api/suppliers";
+
+
+    return allSettled([
+      axios.get<IPurchase[]>(purchasesPath),
+      axios.get<IEmployee[]>(employeesPath),
+      axios.get<IMaterial[]>(materialsPath),
+      axios.get<ISupplier[]>(suppliersPath),
+    ]);
+  },
+  details: (id: number) => requests.get(`/purchases/${id}`),
+  create: (purchase: IPurchasePost) => requests.post("/purchases", purchase),
+  update: (purchase: IPurchase) =>
+    requests.put(`/purchases/${purchase.PurchaseID}`, {
+      Quantity: purchase.Quantity,
+      PurchaseDate: purchase.PurchaseDate,
+      MaterialID: purchase.MaterialID,
+      EmployeeID: purchase.EmployeeID,
+      SupplierID: purchase.SupplierID,
+    }),
+  delete: (id: number) => requests.delete(`/purchases/${id}`),
+};
+
 export default {
   Deliveries,
+  Purchases
 };

@@ -19,6 +19,9 @@ const HomePage = () => {
         <Button as={Link} to="/deliveries" size="huge" inverted>
           Take me to the Deliveries!
         </Button>
+        <Button as={Link} to="/purchases" size="huge" inverted>
+          Take me to the Purchases!
+        </Button>
       </Container>
     </Segment>
   );
