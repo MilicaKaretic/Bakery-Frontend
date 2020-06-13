@@ -16,6 +16,7 @@ export interface IDeliveryDTO {
   export type Deliverer = {
     DelivererID: number;
     DelivererName?: string;
+    DelivererSurname?: string;
   };
   export type Marketplace = {
     MarketplaceID: number;
@@ -24,5 +25,6 @@ export interface IDeliveryDTO {
   export type Employee = {
     EmployeeID: number;
     EmployeeName?: string;
+    EmployeeSurname?:string;
   };
   

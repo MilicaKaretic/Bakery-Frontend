@@ -38,8 +38,8 @@ const PurchaseDetailedHeader: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase
                 />
                 <p>Date: {purchase.PurchaseDate} </p>
                 <p>Material: {purchase.Material.MaterialName} </p>
-                <p>Employee: {purchase.Employee.EmployeeName} </p>
-                <p>Supplier: {purchase.Supplier.SupplierName} </p>
+                <p>Employee: {purchase.Employee.EmployeeName} {purchase.Employee.EmployeeSurname} </p>
+                <p>Supplier: {purchase.Supplier.SupplierName}</p>
               </Item.Content>
             </Item>
           </Item.Group>

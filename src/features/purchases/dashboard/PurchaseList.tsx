@@ -108,7 +108,7 @@ const PurchaseList: React.FC = () => {
 
 
   // Search
-  const resultRenderer = ({ Title }: any) => <Label content={Title} />;
+  const resultRenderer = ({ MaterialName }: any) => <Label content={MaterialName} />;
 
   const handleSearchChange = (e: any, { value }: any) => {
     setIsLoading(true);
@@ -128,7 +128,7 @@ const PurchaseList: React.FC = () => {
       }
     } else {
       const re = new RegExp(_.escapeRegExp(value), "i");
-      const isMatch = (result: any) => re.test(result.Title);
+      const isMatch = (result: any) => re.test(result.Material.MaterialName);
 
       setIsLoading(false);
       setResults(_.filter(purchases, isMatch));
@@ -136,7 +136,7 @@ const PurchaseList: React.FC = () => {
   };
 
   const handleResultSelect = (e: any, { result }: any) =>
-    setValue(result.Title);
+    setValue(result.Material.MaterialName);
 
     return (
       <Fragment>

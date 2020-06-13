@@ -64,6 +64,10 @@ class PurchaseStore {
               },
             })
           );
+          purchases.forEach((purchase) => {
+            purchase.PurchaseDate = purchase.PurchaseDate.split("T")[0];
+
+      })
 
           this.purchasesDTO = purchases;
         } else if (

@@ -16,9 +16,11 @@ export interface IPurchaseDTO {
   export type Supplier = {
     SupplierID: number;
     SupplierName?: string;
+    SupplierSurname?: string;
   };
   export type Employee = {
     EmployeeID: number;
     EmployeeName?: string;
+    EmployeeSurname?: string;
   };
   

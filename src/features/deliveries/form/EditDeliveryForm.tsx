@@ -13,6 +13,8 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
     productNameRecord,
     employeeNameRecord,
     delivererNameRecord,
+    delivererSurnameRecord,
+    employeeSurnameRecord,
     marketplaceNameRecord,
     editDelivery,
     submitting,
@@ -28,7 +30,7 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
   const [deliveryQuantityRequiredError, setDeliveryQuantityRequiredError] = useState(false);
 
   const handleSubmit = () => {
-    const productValid = +delivery.Product.ProductID !== 0;
+    const productValid = +delivery.Product !== 0;
     if (!productValid) {
       setProductRequiredError(true);
     }
@@ -56,10 +58,10 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
       editDelivery({
         DeliveryID: +delivery.DeliveryID,
         DeliveryQuantity: +delivery.DeliveryQuantity as number,
-        ProductID: +delivery.Product,
-        EmployeeID: +delivery.Employee,
-        DelivererID: +delivery.Deliverer,
-        MarketplaceID: +delivery.Marketplace,
+        ProductID: +delivery.Product.ProductID,
+        EmployeeID: +delivery.Employee.EmployeeID,
+        DelivererID: +delivery.Deliverer.DelivererID,
+        MarketplaceID: +delivery.Marketplace.MarketplaceID,
       });
     }
   };
@@ -97,7 +99,7 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
 
     setDelivery({
       ...delivery,
-      Employee: { EmployeeID: value },
+      Employee: { EmployeeID: value, EmployeeName:value, EmployeeSurname:value },
     });
   };
   const handleChangeDeliverer = (e: any, result: any) => {
@@ -107,7 +109,7 @@ const EditDeliveryForm: React.FC<IProps> = ({ delivery: initialFormState }) => {
 
     setDelivery({
       ...delivery,
-      Deliverer: { DelivererID: value },
+      Deliverer: { DelivererID: value, DelivererName: value, DelivererSurname:value},
     });
   };
   const handleChangeMarketplace = (e: any, result: any) => {

@@ -28,7 +28,7 @@ const EditPurchaseForm: React.FC<IProps> = ({ purchase: initialFormState }) => {
   const [purchaseDateRequiredError, setPurchaseDateRequiredError] = useState(false);
 
   const handleSubmit = () => {
-    const materialValid = +purchase.Material.MaterialID !== 0;
+    const materialValid = +purchase.Material !== 0;
     if (!materialValid) {
       setMaterialRequiredError(true);
     }
@@ -56,11 +56,11 @@ const EditPurchaseForm: React.FC<IProps> = ({ purchase: initialFormState }) => {
     if (formValid) {
       editPurchase({
         PurchaseID: +purchase.PurchaseID,
-        Quantity: +purchase.Quantity as number,
+        Quantity: +purchase.Quantity,
         PurchaseDate: purchase.PurchaseDate,
-        MaterialID: +purchase.Material,
-        EmployeeID: +purchase.Employee,
-        SupplierID: +purchase.Supplier,
+        MaterialID: +purchase.Material.MaterialID,
+        EmployeeID: +purchase.Employee.EmployeeID,
+        SupplierID: +purchase.Supplier.SupplierID,
       });
     }
   };

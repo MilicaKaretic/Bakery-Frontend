@@ -108,7 +108,7 @@ const DeliveryList: React.FC = () => {
 
 
   // Search
-  const resultRenderer = ({ Title }: any) => <Label content={Title} />;
+  const resultRenderer = ({ ProductName }: any) => <Label content={ProductName} />;
 
   const handleSearchChange = (e: any, { value }: any) => {
     setIsLoading(true);
@@ -128,7 +128,7 @@ const DeliveryList: React.FC = () => {
       }
     } else {
       const re = new RegExp(_.escapeRegExp(value), "i");
-      const isMatch = (result: any) => re.test(result.Title);
+      const isMatch = (result: any) => re.test(result.Product.ProductName);
 
       setIsLoading(false);
       setResults(_.filter(deliveries, isMatch));
@@ -136,7 +136,7 @@ const DeliveryList: React.FC = () => {
   };
 
   const handleResultSelect = (e: any, { result }: any) =>
-    setValue(result.Title);
+    setValue(result.Product.ProductName);
 
     return (
       <Fragment>

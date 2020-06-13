@@ -33,12 +33,12 @@ const DeliveryDetailedHeader: React.FC<{ delivery: IDeliveryDTO }> = ({ delivery
               <Item.Content>
                 <Header
                   size="huge"
-                  content={delivery.DeliveryQuantity}
+                  content={delivery.Product.ProductName}
                   style={{ color: "white" }}
                 />
-                <p>Product: {delivery.Product.ProductName} </p>
-                <p>Employee: {delivery.Employee.EmployeeName} </p>
-                <p>Deliverer: {delivery.Deliverer.DelivererName} </p>
+                <p>Quantity: {delivery.DeliveryQuantity} </p>
+                <p>Employee: {delivery.Employee.EmployeeName} {delivery.Employee.EmployeeSurname}</p>
+                <p>Deliverer: {delivery.Deliverer.DelivererName} {delivery.Deliverer.DelivererSurname}</p>
                 <p>Marketplace: {delivery.Marketplace.MarketplaceName} </p>
               </Item.Content>
             </Item>

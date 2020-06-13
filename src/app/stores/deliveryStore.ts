@@ -12,7 +12,9 @@ class DeliveryStore {
   @observable productNameRecord = new Map<number, string>();
   @observable marketplaceNameRecord = new Map<number, string>();
   @observable delivererNameRecord = new Map<number, string>();
+  @observable delivererSurnameRecord = new Map<number, string>();
   @observable employeeNameRecord = new Map<number, string>();
+  @observable employeeSurnameRecord = new Map<number, string>();
   @observable delivery: IDeliveryDTO | undefined;
   @observable editMode = false;
   @observable submitting = false;
@@ -48,10 +50,22 @@ class DeliveryStore {
               EmployeeName,
             ])
           );
+          this.employeeSurnameRecord = new Map(
+            employeesResult.value.data.map(({ EmployeeID, EmployeeSurname }) => [
+              EmployeeID,
+              EmployeeSurname,
+            ])
+          );
           this.delivererNameRecord = new Map(
             deliverersResult.value.data.map(({ DelivererID, DelivererName }) => [
               DelivererID,
               DelivererName,
+            ])
+          );
+          this.delivererSurnameRecord = new Map(
+            deliverersResult.value.data.map(({ DelivererID, DelivererSurname }) => [
+              DelivererID,
+              DelivererSurname,
             ])
           );
 
@@ -69,10 +83,14 @@ class DeliveryStore {
               Employee: {
                 EmployeeID: EmployeeID,
                 EmployeeName: this.employeeNameRecord.get(EmployeeID as number)!,
+                EmployeeSurname: this.employeeSurnameRecord.get(EmployeeID as number)!,
+
               },
               Deliverer: {
                 DelivererID: DelivererID,
                 DelivererName: this.delivererNameRecord.get(DelivererID as number)!,
+                DelivererSurname: this.delivererSurnameRecord.get(DelivererID as number)!,
+
               },
             })
           );
@@ -122,10 +140,14 @@ class DeliveryStore {
           Employee: {
             EmployeeID: delivery.EmployeeID,
             EmployeeName: this.employeeNameRecord.get(delivery.EmployeeID as number)!,
+            EmployeeSurname: this.employeeSurnameRecord.get(delivery.EmployeeID as number)!,
+
           },
           Deliverer: {
             DelivererID: delivery.DelivererID,
             DelivererName: this.delivererNameRecord.get(delivery.DelivererID as number)!,
+            DelivererSurname: this.delivererSurnameRecord.get(delivery.DelivererID as number)!,
+
           },
         };
 

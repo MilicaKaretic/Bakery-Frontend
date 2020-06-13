@@ -19,7 +19,9 @@ const CreateDeliveryForm: React.FC = () => {
   const {
     productNameRecord,
     employeeNameRecord,
+    employeeSurnameRecord,
     delivererNameRecord,
+    delivererSurnameRecord,
     marketplaceNameRecord,
     createDelivery,
     submitting,
