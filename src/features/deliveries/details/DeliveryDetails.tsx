@@ -46,55 +46,7 @@ const DeliveryDetails: React.FC<RouteComponentProps<DetailParams>> = ({
         </Container>
       </Grid.Column>
     </Grid>
-    //  <Card fluid>
-    //   <Image src={`/assets/placeholder_book.jpg`} wrapped ui={false} />
-    //   <Card.Content>
-    //     <Card.Header>{book!.Title}</Card.Header>
-    //     <Card.Meta>
-    //       <span>{book!.Writer.WriterName}</span>
-    //     </Card.Meta>
-    //     <Card.Meta>
-    //       <span>{book!.Genre.GenreName}</span>
-    //     </Card.Meta>
-    //     <Card.Description>
-    //       Number of available copies: {book!.NumberOfAvailable}
-    //     </Card.Description>
-    //   </Card.Content>
-    //   <Card.Content extra>
-    //     <Button.Group widths={2}>
-    //       <Modal
-    //         dimmer="blurring"
-    //         trigger={
-    //           <Button
-    //             basic
-    //             onClick={() => openEditForm(book!.BookID)}
-    //             color="blue"
-    //             content="Edit"
-    //           >
-    //             Edit
-    //           </Button>
-    //         }
-    //         closeIcon
-    //       >
-    //         <Modal.Content>
-    //           <EditBookForm book={book!} />
-    //         </Modal.Content>
-    //       </Modal>
-    //       {/*    <Button
-    //         basic
-    //         onClick={() => openEditForm(book!.BookID)}
-    //         color="blue"
-    //         content="Edit"
-    //       /> */}
-    //       <Button
-    //         onClick={() => history.push("/books")}
-    //         basic
-    //         color="red"
-    //         content="Cancel"
-    //       />
-    //     </Button.Group>
-    //   </Card.Content>
-    // </Card>
+   
   );
 };
 

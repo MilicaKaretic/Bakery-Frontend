@@ -21,10 +21,6 @@ axios.interceptors.response.use(undefined, (err) => {
   if (status === 404) {
     history.push("/notfound");
   }
-  
-  /*   if (status === 400 && config.method === "get") {
-    history.push("/notfound");
-  } */
 
   if (status === 500) {
     toast.error("Server error!");
@@ -47,7 +43,6 @@ const Deliveries = {
     const productsPath = "http://localhost:8081/api/products";
     const marketplacesPath = "http://localhost:8081/api/marketplaces";
     const deliverersPath = "http://localhost:8081/api/deliverers";
-
 
     return allSettled([
       axios.get<IDelivery[]>(deliveriesPath),
@@ -76,7 +71,6 @@ const Purchases = {
     const employeesPath = "http://localhost:8081/api/employees";
     const materialsPath = "http://localhost:8081/api/materials";
     const suppliersPath = "http://localhost:8081/api/suppliers";
-
 
     return allSettled([
       axios.get<IPurchase[]>(purchasesPath),
@@ -117,6 +111,7 @@ const Employees = {
     }),
   delete: (id: number) => requests.delete(`/employees/${id}`),
 };
+
 let employee = "";
 let pass = "";
 

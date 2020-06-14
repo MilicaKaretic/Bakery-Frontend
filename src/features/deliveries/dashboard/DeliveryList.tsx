@@ -87,7 +87,6 @@ const DeliveryList: React.FC = () => {
       setOffset(offset);
   
       let slice;
-      //setData();
       if (isSortAsc) {
         slice = deliveries
           .sort((a, b) => a.Product.ProductName.localeCompare(b.Product.ProductName))

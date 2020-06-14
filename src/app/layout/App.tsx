@@ -59,7 +59,6 @@ const App = () => {
     <Fragment>
       <Switch>
       {!isEmployeeAuth && <Route component={LoginForm} />}
-      {/* <ToastContainer position="top-center" /> */}
         <Route exact path="/" component={HomePage} />
       <Route
         path={"/(.+)"}
