@@ -4,69 +4,101 @@ import { observer } from "mobx-react-lite";
 import { NavLink } from "react-router-dom";
 import CreateDeliveryForm from "../deliveries/form/CreateDeliveryForm";
 import CreatePurchaseForm from "../purchases/form/CreatePurchaseForm";
+import CreateEmployeeForm from "../employees/form/CreateEmployeeForm";
 
 const NavBar: React.FC = () => {
-  const [open, setOpen] = useState(false);
-  const handleClose = () => setOpen(false);
+  const [openDelivery, setOpenDelivery] = useState(false);
+  const handleCloseDelivery = () => setOpenDelivery(false);
+
+  const [openPurchase, setOpenPurchase] = useState(false);
+  const handleClosePurchase = () => setOpenPurchase(false);
+
+  const [openEmployee, setOpenEmployee] = useState(false);
+  const handleCloseEmployee = () => setOpenEmployee(false);
   return (
     <Menu fixed="top" stackable>
       <Container>
-        <Menu.Item header as={NavLink} to="/">
-          <img src="/assets/logo.png" alt="logo" style={{ marginRight: 10 }} />
+        <Menu.Item header as={NavLink} to="/" style={{color: "white"}}>
+          <img src="/assets/logoBakery.png" alt="logo" style={{ marginRight: 10 }} />
           Bakery
         </Menu.Item>
 
-        {/* <Menu.Item name="Books" as={NavLink} to='/books'/> */}
-
-        <Dropdown item text="Deliveries">
+        <Dropdown item text="Deliveries" style={{color: "white"}}>
           <Dropdown.Menu>
-            <Dropdown.Item name="Deliveries" as={NavLink} to="/deliveries">
+            <Dropdown.Item name="Deliveries" as={NavLink} to="/deliveries" style={{color: "white"}}>
+            <img src="/assets/deliveryPlaceholder.png" alt="logo" style={{ marginRight: 10 }} />
               All Deliveries
             </Dropdown.Item>
 
-            {/* <Dropdown.Item   as={NavLink} to='/createBook'>Create New Book</Dropdown.Item> */}
             <Modal
-              open={open}
+              open={openDelivery}
               dimmer="blurring"
               trigger={
-                <Dropdown.Item onClick={() => setOpen(true)}>
+                <Dropdown.Item onClick={() => setOpenDelivery(true)}>
                   Create delivery
                 </Dropdown.Item>
               }
-              onClose={handleClose}
+              onClose={handleCloseDelivery}
             >
               <Modal.Content>
                 <CreateDeliveryForm />
               </Modal.Content>
               <Modal.Actions>
-                <Button onClick={handleClose}>Close</Button>
+                <Button onClick={handleCloseDelivery}>Close</Button>
               </Modal.Actions>
             </Modal>
           </Dropdown.Menu>
         </Dropdown>
 
-        <Dropdown item text="Purchases">
+        <Dropdown item text="Purchases" style={{color: "white"}}>
           <Dropdown.Menu>
             <Dropdown.Item name="Purchases" as={NavLink} to="/purchases">
+            <img src="/assets/purchasePlaceholder.png" alt="logo" style={{ marginRight: 10 }} />
               All Purchases
             </Dropdown.Item>
 
-            {/* <Dropdown.Item   as={NavLink} to='/createBook'>Create New Book</Dropdown.Item> */}
             <Modal
-              open={open}
+              open={openPurchase}
               dimmer="blurring"
               trigger={
-                <Dropdown.Item onClick={() => setOpen(true)}>
+                <Dropdown.Item onClick={() => setOpenPurchase(true)}>
                   Create purchase
                 </Dropdown.Item>
               }
-              onClose={handleClose}
+              onClose={handleClosePurchase}
             >
               <Modal.Content>
                 <CreatePurchaseForm />
               </Modal.Content>
               <Modal.Actions>
-                <Button onClick={handleClose}>Close</Button>
+                <Button onClick={handleClosePurchase}>Close</Button>
+              </Modal.Actions>
+            </Modal>
+          </Dropdown.Menu>
+        </Dropdown>
+
+        <Dropdown item text="Employees" style={{color: "white"}}>
+          <Dropdown.Menu>
+            <Dropdown.Item name="Employees" as={NavLink} to="/employees">
+            <img src="/assets/avatarPlaceholder.png" alt="logo" style={{ marginRight: 10 }} />
+              All Employees
+            </Dropdown.Item>
+
+            <Modal
+              open={openEmployee}
+              dimmer="blurring"
+              trigger={
+                <Dropdown.Item onClick={() => setOpenEmployee(true)}>
+                  Create employee
+                </Dropdown.Item>
+              }
+              onClose={handleCloseEmployee}
+            >
+              <Modal.Content>
+                <CreateEmployeeForm />
+              </Modal.Content>
+              <Modal.Actions>
+                <Button onClick={handleCloseEmployee}>Close</Button>
               </Modal.Actions>
             </Modal>
           </Dropdown.Menu>

@@ -9,12 +9,12 @@ import {
   Icon,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import PurchaseStore from "../../../app/stores/purchaseStore";
-import { IPurchaseDTO } from "../../../app/models/Purchase/purchaseDto";
+import EmployeeStore from "../../../app/stores/employeeStore";
+import { IEmployeeDTO } from "../../../app/models/Employee/employeeDto";
 
-const PurchaseListItem: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase }) => {
-  const purchaseStore = useContext(PurchaseStore);
-  const { deletePurchase } = purchaseStore;
+const EmployeeListItem: React.FC<{ employee: IEmployeeDTO }> = ({ employee }) => {
+  const employeeStore = useContext(EmployeeStore);
+  const { deleteEmployee } = employeeStore;
   return (
     <Segment.Group>
       <Segment>
@@ -22,26 +22,22 @@ const PurchaseListItem: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase }) =>
           <Item>
             <Item.Image
               style={{ marginBottom: 10 }}
-              size="small"
-              
-              src="/assets/purchasePlaceholder.png"
+              size="small"            
+              src="/assets/avatarPlaceholder.png"
             />
 
             <Item.Content style={{ marginLeft: 20 }}>
-              <Item.Header style={{ marginTop: 20 }}>{purchase.PurchaseDate}</Item.Header>
+              <Item.Header style={{ marginTop: 20 }}>{employee.EmployeeName} {employee.EmployeeSurname}</Item.Header>
               <Item.Meta style={{ marginBottom: 8 }}>
-                Purchase quantity: {purchase.Quantity}
+                Username: {employee.Username}
               </Item.Meta>
               <Item.Meta style={{ marginBottom: 8 }}>
-                Material: {purchase.Material.MaterialName}
-              </Item.Meta>
-              <Item.Meta style={{ marginBottom: 8 }}>
-                Employee: {purchase.Employee.EmployeeName} {purchase.Employee.EmployeeSurname}
+                Password: {employee.Password}
               </Item.Meta>
             </Item.Content>
             <Popup
               trigger={
-                <Icon onClick={(e: any) => deletePurchase(e, purchase.PurchaseID)}>
+                <Icon onClick={(e: any) => deleteEmployee(e, employee.EmployeeID)}>
                   <Image
                     style={{ marginRight: 160 }}
                     src={`/assets/x.png`}
@@ -50,7 +46,7 @@ const PurchaseListItem: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase }) =>
                   />
                 </Icon>
               }
-              content="Delete Purchase"
+              content="Delete Employee"
               position="top left"
             />
           </Item>
@@ -59,15 +55,14 @@ const PurchaseListItem: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase }) =>
       <Segment clearing>
         <Button
           as={Link}
-          to={`/purchases/${purchase.PurchaseID}`}
+          to={`/employees/${employee.EmployeeID}`}
           floated="right"
           content="View"
           color="grey"
         />
-        <Label basic content={purchase.Supplier.SupplierName} />
       </Segment>
     </Segment.Group>
   );
 };
 
-export default PurchaseListItem;
+export default EmployeeListItem;

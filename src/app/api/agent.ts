@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { IDelivery } from "../models/Delivery/delivery";
 import { IDeliveryPost } from "../models/Delivery/deliveryPost";
 import { IPurchasePost } from "../models/Purchase/purchasePost";
+import { IEmployeePost } from "../models/Employee/employeePost";
 import { IEmployee } from "../models/Employee/employee";
 import { IDeliverer } from "../models/Deliverer/deliverer";
 import { IProduct } from "../models/Product/product";
@@ -34,14 +35,7 @@ const responseBody = (response: AxiosResponse) => response.data;
 
 const requests = {
   get: (url: string) => axios.get(url).then(responseBody),
-  post: (url: string, body: {}) =>
-    fetch("http://localhost:8081/api/deliveries", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(body),
-    }).then((res) => ({ data: res.json() })),
+  post: (url: string, body: {}) => axios.post(url,body).then(responseBody),
   put: (url: string, body: {}) => axios.put(url, body).then(responseBody),
   delete: (url: string) => axios.delete(url).then(responseBody),
 };
@@ -104,7 +98,46 @@ const Purchases = {
   delete: (id: number) => requests.delete(`/purchases/${id}`),
 };
 
+const Employees = {
+  list: () => {
+    const employeesPath = "http://localhost:8081/api/employees";
+    
+    const employees: Promise<IEmployee[]>  = requests.get(employeesPath);
+    return employees;
+    
+  },
+  details: (id: number) => requests.get(`/employees/${id}`),
+  create: (employee: IEmployeePost) => requests.post("/employees", employee),
+  update: (employee: IEmployee) =>
+    requests.put(`/employees/${employee.EmployeeID}`, {
+      EmployeeName: employee.EmployeeName,
+      EmployeeSurname: employee.EmployeeSurname,
+      Username: employee.Username,
+      Password: employee.Password,
+    }),
+  delete: (id: number) => requests.delete(`/employees/${id}`),
+};
+let employee = "";
+let pass = "";
+
+const Login = {
+  login: (Username: string, Password: string) => {
+    employee = Username;
+    pass = Password;
+    return axios.get("http://localhost:8081/login", {
+      params: {},
+      withCredentials: false,
+      headers: {
+        username: Username,
+        password: Password
+      },
+    });
+  },
+};
+
 export default {
   Deliveries,
-  Purchases
+  Purchases,
+  Employees,
+  Login
 };

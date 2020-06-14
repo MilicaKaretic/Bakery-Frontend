@@ -140,7 +140,7 @@ const PurchaseList: React.FC = () => {
 
     return (
       <Fragment>
-        <Dropdown text="Sort">
+        <Dropdown text="Sort" style={{color: "white"}}>
           <Dropdown.Menu>
             <Dropdown.Item
               text="Sort Ascending by Material Name"

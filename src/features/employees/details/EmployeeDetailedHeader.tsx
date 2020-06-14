@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Segment, Item, Header, Button, Image, Modal } from "semantic-ui-react";
-import EditDeliveryForm from "../form/EditDeliveryForm";
-import { IDeliveryDTO } from "../../../app/models/Delivery/deliveryDto";
+import EditEmployeeForm from "../form/EditEmployeeForm";
+import { IEmployeeDTO } from "../../../app/models/Employee/employeeDto";
 import { observer } from "mobx-react-lite";
 
-const deliveryImageStyle = {
+const employeeImageStyle = {
   filter: "brightness(30%)",
 };
 
-const deliveryImageTextStyle = {
+const employeeImageTextStyle = {
   position: "absolute",
   bottom: "5%",
   left: "5%",
@@ -16,30 +16,30 @@ const deliveryImageTextStyle = {
   height: "auto",
   color: "white",
 };
-const DeliveryDetailedHeader: React.FC<{ delivery: IDeliveryDTO }> = ({ delivery }) => {
+const EmployeeDetailedHeader: React.FC<{ employee: IEmployeeDTO }> = ({ employee }) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: "0" }}>
         <Image
-          src={`/assets/del.jpg`}
-          fluid
-          style={deliveryImageStyle}
+          src={`/assets/avatarEdit.jpg`}
+          size="massive"
+          style={employeeImageStyle}
         />
-        <Segment basic style={deliveryImageTextStyle}>
+        <Segment basic style={employeeImageTextStyle}>
           <Item.Group>
             <Item>
               <Item.Content>
                 <Header
                   size="huge"
-                  content={delivery.Product.ProductName}
+                  content={employee.Username}
                   style={{ color: "white" }}
                 />
-                <p>Quantity: {delivery.DeliveryQuantity} </p>
-                <p>Employee: {delivery.Employee.EmployeeName} {delivery.Employee.EmployeeSurname}</p>
-                <p>Deliverer: {delivery.Deliverer.DelivererName} {delivery.Deliverer.DelivererSurname}</p>
-                <p>Marketplace: {delivery.Marketplace.MarketplaceName} </p>
+                <p>Name: {employee.EmployeeName} </p>
+                <p>Surname: {employee.EmployeeSurname} </p>
+                <p>Username: {employee.Username} </p>
+                <p>Password: {employee.Password} </p>
               </Item.Content>
             </Item>
           </Item.Group>
@@ -55,7 +55,7 @@ const DeliveryDetailedHeader: React.FC<{ delivery: IDeliveryDTO }> = ({ delivery
           onClose={handleClose}
         >
           <Modal.Content>
-            <EditDeliveryForm delivery={delivery!} />
+            <EditEmployeeForm employee={employee!} />
           </Modal.Content>
           <Modal.Actions>
             <Button onClick={handleClose}>Close</Button>
@@ -66,4 +66,4 @@ const DeliveryDetailedHeader: React.FC<{ delivery: IDeliveryDTO }> = ({ delivery
   );
 };
 
-export default observer(DeliveryDetailedHeader);
+export default observer(EmployeeDetailedHeader);

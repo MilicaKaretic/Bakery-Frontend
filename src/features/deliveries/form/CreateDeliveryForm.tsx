@@ -75,25 +75,13 @@ const CreateDeliveryForm: React.FC = () => {
     }
   };
 
-  /*const handleUniqueError = (valueID: number, valueTitle: string) => {
-    const existingDelivery = deliveriesDTO.find(
-      (b) => valueID === b.Deliverer.DelivererID && valueTitle === b.DeliveryQuantity
-    );
-
-    if (existingDelivery !== undefined) {
-      setUniqueError(true);
-    } else {
-      setUniqueError(false);
-    }
-  };*/
+  
 
   const handleChange = (e: any, result: any) => {
     const { name, value } = result;
 
     if (name === "Product") {
-      /*if (delivery.DeliveryQuantity !== "") {
-        handleUniqueError(value, book.Title);
-      }*/
+
       setProductRequiredError(false);
     }
     if (name === "Employee") {
@@ -118,9 +106,7 @@ const CreateDeliveryForm: React.FC = () => {
       } else {
         setErrorDeliveryQuantity(false);
       }
-      /*if (productRequiredError === false) {
-        handleUniqueError(+delivery.Product, value);
-      }*/
+
       if (value === "") {
         setDeliveryQuantityRequiredError(true);
       } else {
@@ -153,7 +139,7 @@ const CreateDeliveryForm: React.FC = () => {
         <Form.Field>
           <Form.Input
             onChange={handleInputChange}
-            label="DeliveryQuantity *"
+            label="Delivery Quantity *"
             placeholder="20"
             name="DeliveryQuantity"
             error={errorDeliveryQuantity}
@@ -164,7 +150,7 @@ const CreateDeliveryForm: React.FC = () => {
               pointing
               color="red"
               //style={{ marginBottom: 5 }}
-              content="errorDeliveryQuantity is too long"
+              content="DeliveryQuantity is too long"
             />
           )}
           {deliveryQuantityRequiredError && (
@@ -290,12 +276,6 @@ const CreateDeliveryForm: React.FC = () => {
               delivererRequiredError
             }
           />
-          {/*     <Button
-            onClick={() => cancelCreateFormOpen()}
-            style={{ width: "50%" }}
-            type="button"
-            content="Cancel"
-          /> */}
         </div>
       </Form>
     </Segment>

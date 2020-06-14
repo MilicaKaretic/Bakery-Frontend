@@ -1,35 +1,35 @@
 import React, { useContext, Fragment, useState } from "react";
 import { Item, Button, Label, Segment, Search, Dropdown } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
-import DeliveryStore from "../../../app/stores/deliveryStore";
+import EmployeeStore from "../../../app/stores/employeeStore";
 import { Link } from "react-router-dom";
-import DeliveryListItem from "./DeliveryListItem";
+import EmployeeListItem from "./EmployeeListItem";
 import _ from "lodash";
-import { IDeliveryDTO } from "../../../app/models/Delivery/deliveryDto";
+import { IEmployeeDTO } from "../../../app/models/Employee/employeeDto";
 import ReactPaginate from "react-paginate";
 import { strict } from "assert";
 
-const DeliveryList: React.FC = () => {
-  const deliveryStore = useContext(DeliveryStore);
+const EmployeeList: React.FC = () => {
+  const employeeStore = useContext(EmployeeStore);
   const {
-    deliveriesDTO: deliveries,
-    selectDelivery,
-    deleteDelivery,
+    employeesDTO: employees,
+    selectEmployee,
+    deleteEmployee,
     submitting,
     target,
-  } = deliveryStore;
+  } = employeeStore;
 
   const [offset, setOffset] = useState(0);
   const [perPage, setPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(0);
-  const [pageCount, setPageCount] = useState(Math.ceil(deliveries.length / perPage));
+  const [pageCount, setPageCount] = useState(Math.ceil(employees.length / perPage));
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSortAsc, setIsSortAsc] = useState(false);
   const [isSortDesc, setIsSortDesc] = useState(false);
 
   const [value, setValue] = useState("");
-  const [results, setResults] = useState<IDeliveryDTO[]>(deliveries.slice(offset, offset + perPage));
+  const [results, setResults] = useState<IEmployeeDTO[]>(employees.slice(offset, offset + perPage));
 
 
   // Sort
@@ -38,39 +38,39 @@ const DeliveryList: React.FC = () => {
     setIsSortAsc(false);
     setIsSortDesc(false);
 
-    const slice = deliveries.slice(offset, offset + perPage);
+    const slice = employees.slice(offset, offset + perPage);
 
-    setPageCount(Math.ceil(deliveries.length / perPage));
+    setPageCount(Math.ceil(employees.length / perPage));
 
     setResults(slice);
   };
 
   const sortAscHelper = () => {
-    const slice = deliveries
-      .sort((a, b) => a.Product.ProductName.localeCompare(b.Product.ProductName))
+    const slice = employees
+      .sort((a, b) => a.EmployeeName.localeCompare(b.EmployeeName))
       .slice(offset, offset + perPage);
-    setPageCount(Math.ceil(deliveries.length / perPage));
+    setPageCount(Math.ceil(employees.length / perPage));
 
     setResults(slice);
   };
   const sortDescHelper = () => {
-    const slice = deliveries
-      .sort((a, b) => a.Product.ProductName.localeCompare(b.Product.ProductName))
+    const slice = employees
+      .sort((a, b) => a.EmployeeName.localeCompare(b.EmployeeName))
       .reverse()
       .slice(offset, offset + perPage);
-    setPageCount(Math.ceil(deliveries.length / perPage));
+    setPageCount(Math.ceil(employees.length / perPage));
 
     setResults(slice);
   };
 
-  const sortDeliveriesAsc = () => {
+  const sortEmployeesAsc = () => {
     setIsSortAsc(true);
     setIsSortDesc(false);
 
     sortAscHelper();
   };
 
-  const sortDeliveriesDesc = () => {
+  const sortEmployeesDesc = () => {
     setIsSortDesc(true);
     setIsSortAsc(false);
 
@@ -89,26 +89,26 @@ const DeliveryList: React.FC = () => {
       let slice;
       //setData();
       if (isSortAsc) {
-        slice = deliveries
-          .sort((a, b) => a.Product.ProductName.localeCompare(b.Product.ProductName))
+        slice = employees
+          .sort((a, b) => a.EmployeeName.localeCompare(b.EmployeeName))
           .slice(offset, offset + perPage);
       } else if (isSortDesc) {
-        slice = deliveries
-          .sort((a, b) => a.Product.ProductName.localeCompare(b.Product.ProductName))
+        slice = employees
+          .sort((a, b) => a.EmployeeName.localeCompare(b.EmployeeName))
           .reverse()
           .slice(offset, offset + perPage);
       } else {
-        slice = deliveries.slice(offset, offset + perPage);
+        slice = employees.slice(offset, offset + perPage);
       }
   
-      setPageCount(Math.ceil(deliveries.length / perPage));
+      setPageCount(Math.ceil(employees.length / perPage));
   
       setResults(slice);
     };
 
 
   // Search
-  const resultRenderer = ({ ProductName }: any) => <Label content={ProductName} />;
+  const resultRenderer = ({ EmployeeName }: any) => <Label content={EmployeeName} />;
 
   const handleSearchChange = (e: any, { value }: any) => {
     setIsLoading(true);
@@ -124,31 +124,31 @@ const DeliveryList: React.FC = () => {
       } else if (isSortDesc) {
         sortDescHelper();
       } else {
-        setResults(deliveries.slice(offset, offset + perPage));
+        setResults(employees.slice(offset, offset + perPage));
       }
     } else {
       const re = new RegExp(_.escapeRegExp(value), "i");
-      const isMatch = (result: any) => re.test(result.Product.ProductName);
+      const isMatch = (result: any) => re.test(result.EmployeeName);
 
       setIsLoading(false);
-      setResults(_.filter(deliveries, isMatch));
+      setResults(_.filter(employees, isMatch));
     }
   };
 
   const handleResultSelect = (e: any, { result }: any) =>
-    setValue(result.Product.ProductName);
+    setValue(result.EmployeeName);
 
     return (
       <Fragment>
         <Dropdown text="Sort" style={{color: "white"}}>
           <Dropdown.Menu>
             <Dropdown.Item
-              text="Sort Ascending by Product Name"
-              onClick={sortDeliveriesAsc}
+              text="Sort Ascending by Employee Name"
+              onClick={sortEmployeesAsc}
             />
             <Dropdown.Item
-              text="Sort Descending by Product Name"
-              onClick={sortDeliveriesDesc}
+              text="Sort Descending by Employee Name"
+              onClick={sortEmployeesDesc}
             />
             <Dropdown.Item text="Default" onClick={resetSort} />
           </Dropdown.Menu>
@@ -171,8 +171,8 @@ const DeliveryList: React.FC = () => {
             resultRenderer={resultRenderer}
           />
           <Item.Group divided>
-            {results.map((delivery) => (
-              <DeliveryListItem key={delivery.DeliveryID} delivery={delivery} />
+            {results.map((employee) => (
+              <EmployeeListItem key={employee.EmployeeID} employee={employee} />
             ))}
           </Item.Group>
           <ReactPaginate
@@ -192,4 +192,4 @@ const DeliveryList: React.FC = () => {
       </Fragment>
     );
   };
-export default observer(DeliveryList);
+export default observer(EmployeeList);

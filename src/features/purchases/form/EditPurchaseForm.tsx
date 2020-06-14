@@ -133,7 +133,7 @@ const EditPurchaseForm: React.FC<IProps> = ({ purchase: initialFormState }) => {
             label="PurchaseQuantity *"
             placeholder="40"
             value={purchase?.Quantity}
-            name="PurchaseQuantity"
+            name="Quantity"
             error={errorPurchaseQuantity}
           />
           {errorPurchaseQuantity && (
@@ -160,6 +160,7 @@ const EditPurchaseForm: React.FC<IProps> = ({ purchase: initialFormState }) => {
           <Form.Input
             onChange={handleInputChange}
             label="PurchaseDate *"
+            type="date"
             placeholder="40"
             value={purchase?.PurchaseDate}
             name="PurchaseDate"

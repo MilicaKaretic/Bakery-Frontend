@@ -23,7 +23,7 @@ const PurchaseDetailedHeader: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: "0" }}>
         <Image
-          src={`/assets/placeholder_book.jpg`}
+          src={`/assets/purchGray.jpg`}
           fluid
           style={purchaseImageStyle}
         />

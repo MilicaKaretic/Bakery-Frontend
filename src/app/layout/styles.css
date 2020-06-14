@@ -1,13 +1,54 @@
 body {
-    background-color: rgb(234, 234, 234) !important;
+    background-image: linear-gradient(
+      210deg,
+      rgb(73, 192, 240) 1%,
+      rgb(67, 185, 231) 6%,
+      rgb(62, 172, 216) 11%,
+      rgb(50, 147, 185) 15%,
+      rgb(41, 135, 172) 22%,
+      rgb(33, 118, 151) 28%,
+      rgb(23, 88, 114) 35%,
+      rgb(17, 68, 88) 42%,
+      rgb(13, 54, 70) 51%,
+      rgb(8, 38, 51) 59%,
+      rgb(6, 23, 31) 64%,
+      rgb(4, 15, 20) 75%
+    ) !important;
+  }
+
+  ui.inverted.top.fixed.menu {
+    background-image: linear-gradient(
+      30deg,
+      rgb(73, 192, 240) 1%,
+      rgb(67, 185, 231) 6%,
+      rgb(62, 172, 216) 11%,
+      rgb(50, 147, 185) 15%,
+      rgb(41, 135, 172) 22%,
+      rgb(33, 118, 151) 28%,
+      rgb(23, 88, 114) 35%,
+      rgb(17, 68, 88) 42%,
+      rgb(13, 54, 70) 51%,
+      rgb(8, 38, 51) 59%,
+      rgb(6, 23, 31) 64%,
+      rgb(4, 15, 20) 75%
+    ) !important;
   }
   
   .ui.stackable.top.fixed.menu {
     background-image: linear-gradient(
-      135deg,
-      #ff9980 0%,
-      #ff471a 69%,
-      #b32400 89%
+      210deg,
+      rgb(73, 192, 240) 1%,
+      rgb(67, 185, 231) 6%,
+      rgb(62, 172, 216) 11%,
+      rgb(50, 147, 185) 15%,
+      rgb(41, 135, 172) 22%,
+      rgb(33, 118, 151) 28%,
+      rgb(23, 88, 114) 35%,
+      rgb(17, 68, 88) 42%,
+      rgb(13, 54, 70) 51%,
+      rgb(8, 38, 51) 59%,
+      rgb(6, 23, 31) 64%,
+      rgb(4, 15, 20) 75%
     ) !important;
   }
   
@@ -17,10 +58,19 @@ body {
     display: flex;
     align-items: center;
     background-image: linear-gradient(
-      135deg,
-      #ff9980 0%,
-      #ff471a 69%,
-      #b32400 89%
+      210deg,
+      rgb(73, 192, 240) 1%,
+      rgb(67, 185, 231) 6%,
+      rgb(62, 172, 216) 11%,
+      rgb(50, 147, 185) 15%,
+      rgb(41, 135, 172) 22%,
+      rgb(33, 118, 151) 28%,
+      rgb(23, 88, 114) 35%,
+      rgb(17, 68, 88) 42%,
+      rgb(13, 54, 70) 51%,
+      rgb(8, 38, 51) 59%,
+      rgb(6, 23, 31) 64%,
+      rgb(4, 15, 20) 75%
     ) !important;
     height: 100vh;
   }
@@ -47,10 +97,19 @@ body {
   
   .ui.stackable.top.fixed.menu {
     background-image: linear-gradient(
-      135deg,
-      #ff9980 0%,
-      #ff471a 69%,
-      #b32400 89%
+      210deg,
+      rgb(73, 192, 240) 1%,
+      rgb(67, 185, 231) 6%,
+      rgb(62, 172, 216) 11%,
+      rgb(50, 147, 185) 15%,
+      rgb(41, 135, 172) 22%,
+      rgb(33, 118, 151) 28%,
+      rgb(23, 88, 114) 35%,
+      rgb(17, 68, 88) 42%,
+      rgb(13, 54, 70) 51%,
+      rgb(8, 38, 51) 59%,
+      rgb(6, 23, 31) 64%,
+      rgb(4, 15, 20) 75%
     ) !important;
   }
   
@@ -60,10 +119,19 @@ body {
     display: flex;
     align-items: center;
     background-image: linear-gradient(
-      135deg,
-      #ff9980 0%,
-      #ff471a 69%,
-      #b32400 89%
+      210deg,
+      rgb(73, 192, 240) 1%,
+      rgb(67, 185, 231) 6%,
+      rgb(62, 172, 216) 11%,
+      rgb(50, 147, 185) 15%,
+      rgb(41, 135, 172) 22%,
+      rgb(33, 118, 151) 28%,
+      rgb(23, 88, 114) 35%,
+      rgb(17, 68, 88) 42%,
+      rgb(13, 54, 70) 51%,
+      rgb(8, 38, 51) 59%,
+      rgb(6, 23, 31) 64%,
+      rgb(4, 15, 20) 75%
     ) !important;
     height: 100vh;
   }

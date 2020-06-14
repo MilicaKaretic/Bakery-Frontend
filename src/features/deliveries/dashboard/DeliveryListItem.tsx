@@ -22,19 +22,23 @@ const DeliveryListItem: React.FC<{ delivery: IDeliveryDTO }> = ({ delivery }) =>
           <Item>
             <Item.Image
               style={{ marginBottom: 10 }}
-              size="tiny"
-              circular
-              src="/assets/book_placeholder.png"
+              size="small"
+              
+              src="/assets/deliveryPlaceholder.png"
             />
 
             <Item.Content style={{ marginLeft: 20 }}>
-              <Item.Header style={{ marginTop: 20 }}>{delivery.DeliveryQuantity}</Item.Header>
+              <Item.Header style={{ marginTop: 20 }}>{delivery.Product.ProductName}</Item.Header>
               <Item.Meta style={{ marginBottom: 8 }}>
-                {delivery.Product.ProductName}
+                Delivery Quantity: {delivery.DeliveryQuantity}
               </Item.Meta>
-              {/* <Item.Extra>
-                <Label basic content={book.Genre.GenreName} />
-              </Item.Extra> */}
+              <Item.Meta style={{ marginBottom: 8 }}>
+                Deliverer: {delivery.Deliverer.DelivererName} {delivery.Deliverer.DelivererSurname}
+              </Item.Meta>
+              
+              <Item.Meta style={{ marginBottom: 8 }}>
+                Employee: {delivery.Employee.EmployeeName} {delivery.Employee.EmployeeSurname}
+              </Item.Meta>
             </Item.Content>
             <Popup
               trigger={
@@ -61,14 +65,6 @@ const DeliveryListItem: React.FC<{ delivery: IDeliveryDTO }> = ({ delivery }) =>
           content="View"
           color="grey"
         />
-        {/*    <Button
-          name={book.BookID}
-          loading={+target === book.BookID && submitting}
-          onClick={(e) => deleteBook(e, book.BookID)}
-          floated="right"
-          content="Delete"
-          color="red"
-        /> */}
         <Label basic content={delivery.Marketplace.MarketplaceName} />
       </Segment>
     </Segment.Group>

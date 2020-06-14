@@ -95,12 +95,7 @@ const CreatePurchaseForm: React.FC = () => {
   };
   const handleInputChange = (event: FormEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget;
-    if (name === "PurchaseQuantity") {
-      if (value.length > 255) {
-        setErrorPurchaseQuantity(true);
-      } else {
-        setErrorPurchaseQuantity(false);
-      }
+    if (name === "Quantity") {
       if (value === "") {
         setPurchaseQuantityRequiredError(true);
       } else {
@@ -129,9 +124,9 @@ const CreatePurchaseForm: React.FC = () => {
         <Form.Field>
           <Form.Input
             onChange={handleInputChange}
-            label="PurchaseQuantity *"
+            label="Purchase Quantity *"
             placeholder="20"
-            name="PurchaseQuantity"
+            name="Quantity"
             error={errorPurchaseQuantity}
           />
           {errorPurchaseQuantity && (
@@ -157,7 +152,8 @@ const CreatePurchaseForm: React.FC = () => {
         <Form.Field>
           <Form.Input
             onChange={handleInputChange}
-            label="PurchaseDate *"
+            label="Purchase Date *"
+            type="date"
             placeholder="20"
             name="PurchaseDate"
             error={errorPurchaseDate}
@@ -255,7 +251,6 @@ const CreatePurchaseForm: React.FC = () => {
             type="submit"
             content="Save"
             disabled={
-              errorPurchaseQuantity ||
               materialRequiredError ||
               employeeRequiredError ||
               purchaseQuantityRequiredError ||
