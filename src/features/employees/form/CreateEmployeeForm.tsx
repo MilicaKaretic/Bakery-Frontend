@@ -114,7 +114,8 @@ const CreateEmployeeForm: React.FC = () => {
         <Form.Field>
           <Form.Input
             onChange={handleInputChange}
-            label="Employee Name *"
+            label="Employee Name "
+            required true
             placeholder="20"
             name="EmployeeName"
             error={errorEmployeeName}
@@ -142,7 +143,8 @@ const CreateEmployeeForm: React.FC = () => {
         <Form.Field>
           <Form.Input
             onChange={handleInputChange}
-            label="Employee Surname *"
+            label="Employee Surname "
+            required true
             placeholder="20"
             name="EmployeeSurname"
             error={errorEmployeeSurname}
@@ -170,7 +172,8 @@ const CreateEmployeeForm: React.FC = () => {
         <Form.Field>
           <Form.Input
             onChange={handleInputChange}
-            label="Username *"
+            label="Username"
+            required true
             placeholder="20"
             name="Username"
             error={errorUsername}
@@ -198,7 +201,8 @@ const CreateEmployeeForm: React.FC = () => {
         <Form.Field>
           <Form.Input
             onChange={handleInputChange}
-            label="Password *"
+            label="Password "
+            required true
             placeholder="20"
             name="Password"
             error={errorPassword}

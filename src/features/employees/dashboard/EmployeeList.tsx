@@ -1,13 +1,11 @@
 import React, { useContext, Fragment, useState } from "react";
-import { Item, Button, Label, Segment, Search, Dropdown } from "semantic-ui-react";
+import { Item, Label, Search, Dropdown } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import EmployeeStore from "../../../app/stores/employeeStore";
-import { Link } from "react-router-dom";
 import EmployeeListItem from "./EmployeeListItem";
 import _ from "lodash";
 import { IEmployeeDTO } from "../../../app/models/Employee/employeeDto";
 import ReactPaginate from "react-paginate";
-import { strict } from "assert";
 
 const EmployeeList: React.FC = () => {
   const employeeStore = useContext(EmployeeStore);

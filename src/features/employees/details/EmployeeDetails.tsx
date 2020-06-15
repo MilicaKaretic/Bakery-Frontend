@@ -32,6 +32,7 @@ const EmployeeDetails: React.FC<RouteComponentProps<DetailParams>> = ({
               style={{ marginRight: 160 }}
               src={`/assets/arrow.png`}
               wrapped
+              size="tiny"
               ui={false}
             />
           </Link>
@@ -40,8 +41,8 @@ const EmployeeDetails: React.FC<RouteComponentProps<DetailParams>> = ({
         position="top left"
       />
 
-      <Grid.Column width={10}>
-        <Container style={{ marginTop: 140, marginRight: 50 }}>
+      <Grid.Column width={7}>
+        <Container style={{ marginTop: 5, marginRight: 50 }}>
           <EmployeeDetailedHeader employee={employee!} />
         </Container>
       </Grid.Column>

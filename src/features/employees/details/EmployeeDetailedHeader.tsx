@@ -39,7 +39,7 @@ const EmployeeDetailedHeader: React.FC<{ employee: IEmployeeDTO }> = ({ employee
                 <p>Name: {employee.EmployeeName} </p>
                 <p>Surname: {employee.EmployeeSurname} </p>
                 <p>Username: {employee.Username} </p>
-                <p>Password: {employee.Password} </p>
+                {/* <p>Password: {employee.Password} </p> */}
               </Item.Content>
             </Item>
           </Item.Group>
@@ -50,7 +50,7 @@ const EmployeeDetailedHeader: React.FC<{ employee: IEmployeeDTO }> = ({ employee
           open={open}
           closeOnTriggerClick
           dimmer="blurring"
-          trigger={<Button onClick={() => setOpen(true)}>Edit</Button>}
+          trigger={<Button color="green" onClick={() => setOpen(true)}>Edit</Button>}
           closeOnDimmerClick
           onClose={handleClose}
         >

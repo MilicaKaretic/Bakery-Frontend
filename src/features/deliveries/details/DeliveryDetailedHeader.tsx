@@ -50,7 +50,7 @@ const DeliveryDetailedHeader: React.FC<{ delivery: IDeliveryDTO }> = ({ delivery
           open={open}
           closeOnTriggerClick
           dimmer="blurring"
-          trigger={<Button onClick={() => setOpen(true)}>Edit</Button>}
+          trigger={<Button color="green" onClick={() => setOpen(true)}>Edit</Button>}
           closeOnDimmerClick
           onClose={handleClose}
         >

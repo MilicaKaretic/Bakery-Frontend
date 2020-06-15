@@ -40,8 +40,8 @@ const PurchaseDetails: React.FC<RouteComponentProps<DetailParams>> = ({
         position="top left"
       />
 
-      <Grid.Column width={10}>
-        <Container style={{ marginTop: 140, marginRight: 50 }}>
+      <Grid.Column width={7}>
+        <Container style={{ marginTop: 5, marginRight: 50 }}>
           <PurchaseDetailedHeader purchase={purchase!} />
         </Container>
       </Grid.Column>

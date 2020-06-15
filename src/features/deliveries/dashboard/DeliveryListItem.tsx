@@ -63,9 +63,10 @@ const DeliveryListItem: React.FC<{ delivery: IDeliveryDTO }> = ({ delivery }) =>
           to={`/deliveries/${delivery.DeliveryID}`}
           floated="right"
           content="View"
-          color="grey"
+          color="green"
         />
         <Label basic content={delivery.Marketplace.MarketplaceName} />
+        <Label basic content={delivery.Marketplace.Adress} />
       </Segment>
     </Segment.Group>
   );

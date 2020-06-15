@@ -2,12 +2,10 @@ import React, { useContext, Fragment, useState } from "react";
 import { Item, Button, Label, Segment, Search, Dropdown } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import PurchaseStore from "../../../app/stores/purchaseStore";
-import { Link } from "react-router-dom";
 import PurchaseListItem from "./PurchaseListItem";
 import _ from "lodash";
 import { IPurchaseDTO } from "../../../app/models/Purchase/purchaseDto";
 import ReactPaginate from "react-paginate";
-import { strict } from "assert";
 
 const PurchaseList: React.FC = () => {
   const purchaseStore = useContext(PurchaseStore);

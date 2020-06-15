@@ -99,7 +99,8 @@ const EditEmployeeForm: React.FC<IProps> = ({ employee: initialFormState }) => {
         <Form.Field>
           <Form.Input
             onChange={handleInputChange}
-            label="Employee Name *"
+            label="Employee Name "
+            required true
             placeholder="20"
             name="EmployeeName"
             error={errorEmployeeName}
@@ -128,7 +129,8 @@ const EditEmployeeForm: React.FC<IProps> = ({ employee: initialFormState }) => {
         <Form.Field>
           <Form.Input
             onChange={handleInputChange}
-            label="Employee Surname *"
+            label="Employee Surname "
+            required true
             placeholder="20"
             name="EmployeeSurname"
             error={errorEmployeeSurname}
@@ -156,7 +158,8 @@ const EditEmployeeForm: React.FC<IProps> = ({ employee: initialFormState }) => {
         <Form.Field>
           <Form.Input
             onChange={handleInputChange}
-            label="Username *"
+            label="Username"
+            required true
             placeholder="20"
             name="Username"
             value={employee.Username}
@@ -184,7 +187,8 @@ const EditEmployeeForm: React.FC<IProps> = ({ employee: initialFormState }) => {
         <Form.Field>
           <Form.Input
             onChange={handleInputChange}
-            label="Password *"
+            label="Password "
+            required true
             placeholder="20"
             name="Password"
             value={employee.Password}

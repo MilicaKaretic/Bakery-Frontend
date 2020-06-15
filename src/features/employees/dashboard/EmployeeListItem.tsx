@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import {
   Item,
   Button,
-  Label,
   Segment,
   Image,
   Popup,
@@ -29,11 +28,17 @@ const EmployeeListItem: React.FC<{ employee: IEmployeeDTO }> = ({ employee }) =>
             <Item.Content style={{ marginLeft: 20 }}>
               <Item.Header style={{ marginTop: 20 }}>{employee.EmployeeName} {employee.EmployeeSurname}</Item.Header>
               <Item.Meta style={{ marginBottom: 8 }}>
-                Username: {employee.Username}
+                Name: {employee.EmployeeName}
               </Item.Meta>
               <Item.Meta style={{ marginBottom: 8 }}>
-                Password: {employee.Password}
+                Surname: {employee.EmployeeSurname}
               </Item.Meta>
+              <Item.Meta style={{ marginBottom: 8 }}>
+                Username: {employee.Username}
+              </Item.Meta>
+              {/* <Item.Meta style={{ marginBottom: 8 }}>
+                Password: {employee.Password}
+              </Item.Meta> */}
             </Item.Content>
             <Popup
               trigger={
@@ -58,7 +63,7 @@ const EmployeeListItem: React.FC<{ employee: IEmployeeDTO }> = ({ employee }) =>
           to={`/employees/${employee.EmployeeID}`}
           floated="right"
           content="View"
-          color="grey"
+          color="green"
         />
       </Segment>
     </Segment.Group>

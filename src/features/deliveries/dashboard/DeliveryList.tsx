@@ -2,12 +2,10 @@ import React, { useContext, Fragment, useState } from "react";
 import { Item, Button, Label, Segment, Search, Dropdown } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import DeliveryStore from "../../../app/stores/deliveryStore";
-import { Link } from "react-router-dom";
 import DeliveryListItem from "./DeliveryListItem";
 import _ from "lodash";
 import { IDeliveryDTO } from "../../../app/models/Delivery/deliveryDto";
 import ReactPaginate from "react-paginate";
-import { strict } from "assert";
 
 const DeliveryList: React.FC = () => {
   const deliveryStore = useContext(DeliveryStore);

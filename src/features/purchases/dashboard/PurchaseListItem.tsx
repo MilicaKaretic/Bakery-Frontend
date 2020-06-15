@@ -28,7 +28,9 @@ const PurchaseListItem: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase }) =>
             />
 
             <Item.Content style={{ marginLeft: 20 }}>
-              <Item.Header style={{ marginTop: 20 }}>{purchase.PurchaseDate}</Item.Header>
+              <Item.Header style={{ marginTop: 20 }}>
+              <Icon name='calendar'/> {purchase.PurchaseDate}
+              </Item.Header>
               <Item.Meta style={{ marginBottom: 8 }}>
                 Purchase quantity: {purchase.Quantity}
               </Item.Meta>
@@ -62,9 +64,9 @@ const PurchaseListItem: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase }) =>
           to={`/purchases/${purchase.PurchaseID}`}
           floated="right"
           content="View"
-          color="grey"
+          color="green"
         />
-        <Label basic content={purchase.Supplier.SupplierName} />
+        <Label basic content={purchase.Supplier.SupplierName}/>
       </Segment>
     </Segment.Group>
   );

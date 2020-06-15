@@ -2,8 +2,6 @@ import { action, observable } from "mobx";
 import { createContext, SyntheticEvent } from "react";
 import agent from "../api/agent";
 import { IEmployee } from "../models/Employee/employee";
-import { IEmployeeDTO } from "../models/Employee/employeeDto";
-import { IEmployeePost } from "../models/Employee/employeePost";
 import { history } from "../../index";
 
 class LoginStore {
@@ -20,13 +18,8 @@ class LoginStore {
         else{
           this.isEmployeeAuth = true;
           this.authEmployee = employee.data["0"];
-          history.push("/deliveries")
+          history.push("/")
         }
-        /* this.authEmployee = employee.data;
-        this.isEmployeeAuth = true;
-        if (history.location.pathname === "/login") {
-          history.push("/");
-        } */
       })
       .catch((err) => {
         console.log(err);

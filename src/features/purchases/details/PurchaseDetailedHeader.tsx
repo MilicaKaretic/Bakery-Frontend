@@ -50,7 +50,7 @@ const PurchaseDetailedHeader: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase
           open={open}
           closeOnTriggerClick
           dimmer="blurring"
-          trigger={<Button onClick={() => setOpen(true)}>Edit</Button>}
+          trigger={<Button color="green" onClick={() => setOpen(true)}>Edit</Button>}
           closeOnDimmerClick
           onClose={handleClose}
         >

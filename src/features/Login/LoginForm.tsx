@@ -1,9 +1,7 @@
 import React, { useContext, useState, FormEvent } from "react";
 import {
-  Segment,
   Form,
   Label,
-  Dropdown,
   Button,
   Grid,
 } from "semantic-ui-react";
@@ -45,13 +43,15 @@ const LoginForm = () => {
       <Grid.Row centered style={{ marginTop: 200 }}>
         <Grid.Column width={8}>
           <Form onSubmit={handleSubmit}>
-            <label style={{color: "white"}}>Username *</label> 
+            <label style={{color: "white"}}>Username </label> 
+            <label style={{color: "red"}}> *</label>
             <Form.Input
               onChange={handleInputChange}
               placeholder="ZikaZ"
               name="Username"
             />
-            <label style={{color: "white"}}>Password *</label> 
+            <label style={{color: "white"}}>Password </label> 
+            <label style={{color: "red"}}> *</label>
             <Form.Input
               onChange={handleInputChange}
               placeholder="******"
