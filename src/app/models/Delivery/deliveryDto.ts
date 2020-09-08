@@ -7,8 +7,6 @@ export interface IDeliveryDTO {
     Employee: Employee;
   }
   
-  //export type Tuple = readonly [number, string];
-  
   export type Product = {
     ProductID: number;
     ProductName: string;

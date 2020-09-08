@@ -130,9 +130,28 @@ const Login = {
   },
 };
 
+let employeeAdmin = "";
+let passA = "";
+
+const LoginAdmin = {
+  loginAdmin: (Username: string, Password: string) => {
+    employeeAdmin = Username;
+    passA = Password;
+    return axios.get("http://localhost:8081/loginAdmin", {
+      params: {},
+      withCredentials: false,
+      headers: {
+        username: Username,
+        password: Password
+      },
+    });
+  },
+};
+
 export default {
   Deliveries,
   Purchases,
   Employees,
-  Login
+  Login,
+  LoginAdmin
 };

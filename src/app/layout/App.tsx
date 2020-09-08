@@ -11,6 +11,8 @@ import LoginStore from "../stores/loginStore";
 import { observer } from "mobx-react-lite";
 import { Route, Switch } from "react-router-dom";
 import HomePage from "../../features/home/HomePage";
+import RootHomePage from "../../features/home/RootHomePage";
+import AdminPage from "../../features/admin/AdminPage";
 import CreateDeliveryForm from "../../features/deliveries/form/CreateDeliveryForm";
 import CreatePurchaseForm from "../../features/purchases/form/CreatePurchaseForm";
 import DeliveryDetails from "../../features/deliveries/details/DeliveryDetails";
@@ -27,7 +29,7 @@ const App = () => {
   const purchaseStore = useContext(PurchaseStore);
   const employeeStore = useContext(EmployeeStore);
   const loginStore = useContext(LoginStore);
-  const { isEmployeeAuth } = loginStore;
+  const { isEmployeeAuth, isAdminAuth } = loginStore;
 
   useEffect(() => {
     deliveryStore.loadDeliveries();
@@ -57,8 +59,10 @@ const App = () => {
 
     <Fragment>
       <Switch>
-      {!isEmployeeAuth && <Route component={LoginForm} />}
+      
         <Route exact path="/" component={HomePage} />
+        {/* {!isEmployeeAuth && <Route component={LoginForm} />}
+        <Route exact path="/" component={DeliveryDashboard} /> */}
       <Route
         path={"/(.+)"}
         render={() => (
@@ -74,9 +78,15 @@ const App = () => {
                 <Route path="/purchases/:id" component={PurchaseDetails} />
                 <Route path="/createPurchase" component={CreatePurchaseForm} />
                 <Route exact path="/employees" component={EmployeeDashboard} />
-                <Route path="/employees/:id" component={EmployeeDetails} />
-                <Route path="/createEmploye" component={CreateEmployeeForm} />
+                <Route path="/employees/:id" component={EmployeeDetails} />                
+                
+                {isAdminAuth &&  <Route
+                    path="/createEmployee"
+                    component={CreateEmployeeForm}
+                /> }
+                {/* <Route path="/createEmploye" component={CreateEmployeeForm} /> */}
                 <Route component={NotFound} />
+                <Route path="/rootH" component={RootHomePage} />  
               </Switch>
             </Container>
             

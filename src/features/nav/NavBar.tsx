@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Menu, Container, Dropdown, Modal, Button } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import { NavLink } from "react-router-dom";
 import CreateDeliveryForm from "../deliveries/form/CreateDeliveryForm";
 import CreatePurchaseForm from "../purchases/form/CreatePurchaseForm";
 import CreateEmployeeForm from "../employees/form/CreateEmployeeForm";
+import LoginStore from "../../app/stores/loginStore";
 
 const NavBar: React.FC = () => {
+  const loginStore = useContext(LoginStore);
+  const {
+    isEmployeeAuth,
+    logOut,
+    isAdminAuth,
+    authAdmin,
+    authEmployee
+  } = loginStore;
+
   const [openDelivery, setOpenDelivery] = useState(false);
   const handleCloseDelivery = () => setOpenDelivery(false);
 
@@ -77,7 +87,7 @@ const NavBar: React.FC = () => {
           </Dropdown.Menu>
         </Dropdown>
 
-        <Dropdown item text="Employees" style={{color: "white"}}>
+        {!isEmployeeAuth && <Dropdown item text="Employees" style={{color: "white"}}>
           <Dropdown.Menu>
             <Dropdown.Item name="Employees" as={NavLink} to="/employees">
             <img src="/assets/avatarPlaceholder.png" alt="logo" style={{ marginRight: 10 }} />
@@ -103,7 +113,14 @@ const NavBar: React.FC = () => {
             </Modal>
           </Dropdown.Menu>
         </Dropdown>
+}
       </Container>
+
+      <Menu.Item floated="right">
+        <Button onClick={logOut} text="Logout" icon="power">
+          Log out
+        </Button>
+      </Menu.Item>
     </Menu>
   );
 };

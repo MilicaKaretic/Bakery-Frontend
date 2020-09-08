@@ -7,7 +7,7 @@ import {
 } from "semantic-ui-react";
 import LoginStore from "../../app/stores/loginStore";
 
-const LoginForm = () => {
+const LoginAdminForm = () => {
   const initializeForm = () => {
     return {
       Username: "",
@@ -16,21 +16,21 @@ const LoginForm = () => {
   };
 
   const loginStore = useContext(LoginStore);
-  const { loginEmployee, authEmployee } = loginStore;
+  const { loginAdmin, authAdmin } = loginStore;
 
-  const [employee, setEmployee] = useState(initializeForm);
+  const [admin, setAdmin] = useState(initializeForm);
   const [wrongUsername, setWrongUsername] = useState(false);
 
   const handleInputChange = (event: FormEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget;
 
-    setEmployee({ ...employee, [name]: value });
+    setAdmin({ ...admin, [name]: value });
   };
 
   const handleSubmit = () => {
     if (true) {
-      loginEmployee(employee.Username, employee.Password);
-      if(authEmployee?.Username === undefined || authEmployee?.Password === undefined){       
+      loginAdmin(admin.Username, admin.Password);
+      if(authAdmin?.Username === undefined || authAdmin?.Password === undefined){       
           setWrongUsername(true)     
       } else {
         setWrongUsername(false)
@@ -83,4 +83,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginAdminForm;
