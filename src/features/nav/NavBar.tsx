@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import CreateDeliveryForm from "../deliveries/form/CreateDeliveryForm";
 import CreatePurchaseForm from "../purchases/form/CreatePurchaseForm";
 import CreateEmployeeForm from "../employees/form/CreateEmployeeForm";
+import CreateProductForm from "../products/form/CreateProductForm";
+
 import LoginStore from "../../app/stores/loginStore";
 
 const NavBar: React.FC = () => {
@@ -25,11 +27,15 @@ const NavBar: React.FC = () => {
 
   const [openEmployee, setOpenEmployee] = useState(false);
   const handleCloseEmployee = () => setOpenEmployee(false);
+
+  const [openProduct, setOpenProduct] = useState(false);
+  const handleCloseProduct = () => setOpenProduct(false);
+
   return (
     <Menu fixed="top" stackable>
       <Container>
         <Menu.Item header as={NavLink} to="/" style={{color: "white"}}>
-          <img src="/assets/logoBakery.png" alt="logo" style={{ marginRight: 10 }} />
+          <img src="/assets/placeholderBakery2.png" alt="logo"  style={{ marginRight: 10}} />
           Bakery
         </Menu.Item>
 
@@ -82,6 +88,33 @@ const NavBar: React.FC = () => {
               </Modal.Content>
               <Modal.Actions>
                 <Button onClick={handleClosePurchase}>Close</Button>
+              </Modal.Actions>
+            </Modal>
+          </Dropdown.Menu>
+        </Dropdown>
+
+        <Dropdown item text="Products" style={{color: "white"}}>
+          <Dropdown.Menu>
+            <Dropdown.Item name="Products" as={NavLink} to="/products">
+            <img src="/assets/productPlaceholder.png" alt="logo" style={{ marginRight: 10 }} />
+              All Products
+            </Dropdown.Item>
+
+            <Modal
+              open={openProduct}
+              dimmer="blurring"
+              trigger={
+                <Dropdown.Item onClick={() => setOpenProduct(true)}>
+                  Create product
+                </Dropdown.Item>
+              }
+              onClose={handleCloseProduct}
+            >
+              <Modal.Content>
+                <CreateProductForm />
+              </Modal.Content>
+              <Modal.Actions>
+                <Button onClick={handleCloseProduct}>Close</Button>
               </Modal.Actions>
             </Modal>
           </Dropdown.Menu>

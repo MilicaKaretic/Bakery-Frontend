@@ -2,19 +2,18 @@ import React, { useContext } from "react";
 import {
   Item,
   Button,
-  Label,
   Segment,
   Image,
   Popup,
   Icon,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import PurchaseStore from "../../../app/stores/purchaseStore";
-import { IPurchaseDTO } from "../../../app/models/Purchase/purchaseDto";
+import ProductStore from "../../../app/stores/productStore";
+import { IProductDTO } from "../../../app/models/Product/productDto";
 
-const PurchaseListItem: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase }) => {
-  const purchaseStore = useContext(PurchaseStore);
-  const { deletePurchase } = purchaseStore;
+const ProductListItem: React.FC<{ product: IProductDTO }> = ({ product }) => {
+  const productStore = useContext(ProductStore);
+  const { deleteProduct } = productStore;
   return (
     <Segment.Group>
       <Segment>
@@ -22,31 +21,26 @@ const PurchaseListItem: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase }) =>
           <Item>
             <Item.Image
               style={{ marginBottom: 10 }}
-              size="small"
-              
-              src="/assets/purchasePlaceholder.png"
+              size="small"            
+              src="/assets/productPlaceholder.png"
             />
 
             <Item.Content style={{ marginLeft: 20 }}>
-              <Item.Header style={{ marginTop: 20 }}>
-              <Icon name='calendar'/> {purchase.PurchaseDate}
-              </Item.Header>
+              <Item.Header style={{ marginTop: 20 }}>{product.ProductName} </Item.Header>
               <Item.Meta style={{ marginBottom: 8 }}>
-                ________________________
+                __________________
               </Item.Meta>
               <Item.Meta style={{ marginBottom: 8 }}>
-                Purchase quantity: {purchase.Quantity}
+                Quantity: {product.ProductQuantity}
               </Item.Meta>
               <Item.Meta style={{ marginBottom: 8 }}>
-                Material: {purchase.Material.MaterialName}
+                Available: {String(product.Available)}
               </Item.Meta>
-              <Item.Meta style={{ marginBottom: 8 }}>
-                Employee: {purchase.Employee.EmployeeName} {purchase.Employee.EmployeeSurname}
-              </Item.Meta>
+             
             </Item.Content>
             <Popup
               trigger={
-                <Icon onClick={(e: any) => deletePurchase(e, purchase.PurchaseID)}>
+                <Icon onClick={(e: any) => deleteProduct(e, product.ProductID)}>
                   <Image
                     style={{ marginRight: 160 }}
                     src={`/assets/x.png`}
@@ -55,7 +49,7 @@ const PurchaseListItem: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase }) =>
                   />
                 </Icon>
               }
-              content="Delete Purchase"
+              content="Delete Product"
               position="top left"
             />
           </Item>
@@ -64,15 +58,14 @@ const PurchaseListItem: React.FC<{ purchase: IPurchaseDTO }> = ({ purchase }) =>
       <Segment clearing>
         <Button
           as={Link}
-          to={`/purchases/${purchase.PurchaseID}`}
+          to={`/products/${product.ProductID}`}
           floated="right"
           content="View"
           color="green"
         />
-        <Label basic content={purchase.Supplier.SupplierName}/>
       </Segment>
     </Segment.Group>
   );
 };
 
-export default PurchaseListItem;
+export default ProductListItem;

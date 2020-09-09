@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { IDelivery } from "../models/Delivery/delivery";
 import { IDeliveryPost } from "../models/Delivery/deliveryPost";
 import { IPurchasePost } from "../models/Purchase/purchasePost";
+import { IProductPost } from "../models/Product/productPost";
 import { IEmployeePost } from "../models/Employee/employeePost";
 import { IEmployee } from "../models/Employee/employee";
 import { IDeliverer } from "../models/Deliverer/deliverer";
@@ -112,6 +113,25 @@ const Employees = {
   delete: (id: number) => requests.delete(`/employees/${id}`),
 };
 
+const Products = {
+  list: () => {
+    const productsPath = "http://localhost:8081/api/products";
+    
+    const products: Promise<IProduct[]>  = requests.get(productsPath);
+    return products;
+    
+  },
+  details: (id: number) => requests.get(`/products/${id}`),
+  create: (product: IProductPost) => requests.post("/products", product),
+  update: (product: IProduct) =>
+    requests.put(`/products/${product.ProductID}`, {
+      ProductName: product.ProductName,
+      ProductQuantity: product.ProductQuantity,
+      Available: product.Available,
+    }),
+  delete: (id: number) => requests.delete(`/products/${id}`),
+};
+
 let employee = "";
 let pass = "";
 
@@ -153,5 +173,6 @@ export default {
   Purchases,
   Employees,
   Login,
-  LoginAdmin
+  LoginAdmin,
+  Products
 };

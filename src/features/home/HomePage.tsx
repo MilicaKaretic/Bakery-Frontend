@@ -1,14 +1,10 @@
 import React, { Fragment, useContext, useState } from "react";
 import { Container, Segment, Header, Button, Image, Modal } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import LoginStore from "../../app/stores/loginStore";
 import LoginForm from "../../features/Login/LoginForm";
 import LoginAdminForm from "../../features/Login/LoginAdminForm";
 
 
 const HomePage = () => {
-  const loginStore = useContext(LoginStore);
-  const { isEmployeeAuth, isAdminAuth } = loginStore;
 
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const handleCloseLoginModal = () => setOpenLoginModal(false);
@@ -22,7 +18,7 @@ const HomePage = () => {
         <Header as="h1" inverted>
           <Image
             size="massive"
-            src="/assets/placeholderBakery.png"
+            src="/assets/placeholderBakery2.png"
             alt="logo"
             style={{ marginBottom: 12 }}
           />
@@ -69,16 +65,7 @@ const HomePage = () => {
               <Button onClick={handleCloseLoginAModal}>Close</Button>
             </Modal.Actions>
           </Modal>
-        </Fragment>
-        
-        {/* <Button as={Link} to="/deliveries" size="huge" inverted>
-          Take me to the Deliveries!
-        </Button>
-        <Button as={Link} to="/purchases" size="huge" inverted>
-          Take me to the Purchases!
-        </Button> */}
-
-        
+        </Fragment>      
         
       </Container>
     </Segment>

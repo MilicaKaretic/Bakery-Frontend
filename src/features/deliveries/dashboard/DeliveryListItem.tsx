@@ -30,6 +30,9 @@ const DeliveryListItem: React.FC<{ delivery: IDeliveryDTO }> = ({ delivery }) =>
             <Item.Content style={{ marginLeft: 20 }}>
               <Item.Header style={{ marginTop: 20 }}>{delivery.Product.ProductName}</Item.Header>
               <Item.Meta style={{ marginBottom: 8 }}>
+                _________________________
+              </Item.Meta>
+              <Item.Meta style={{ marginBottom: 8 }}>
                 Delivery Quantity: {delivery.DeliveryQuantity}
               </Item.Meta>
               <Item.Meta style={{ marginBottom: 8 }}>

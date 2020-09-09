@@ -28,6 +28,9 @@ const EmployeeListItem: React.FC<{ employee: IEmployeeDTO }> = ({ employee }) =>
             <Item.Content style={{ marginLeft: 20 }}>
               <Item.Header style={{ marginTop: 20 }}>{employee.EmployeeName} {employee.EmployeeSurname}</Item.Header>
               <Item.Meta style={{ marginBottom: 8 }}>
+                ______________________
+              </Item.Meta>
+              <Item.Meta style={{ marginBottom: 8 }}>
                 Name: {employee.EmployeeName}
               </Item.Meta>
               <Item.Meta style={{ marginBottom: 8 }}>

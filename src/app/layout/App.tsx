@@ -7,16 +7,18 @@ import LoadingComponent from "./LoadingComponent";
 import DeliveryStore from "../stores/deliveryStore";
 import PurchaseStore from "../stores/purchaseStore";
 import EmployeeStore from "../stores/employeeStore";
+import ProductStore from "../stores/productStore";
 import LoginStore from "../stores/loginStore";
 import { observer } from "mobx-react-lite";
 import { Route, Switch } from "react-router-dom";
 import HomePage from "../../features/home/HomePage";
-import RootHomePage from "../../features/home/RootHomePage";
-import AdminPage from "../../features/admin/AdminPage";
 import CreateDeliveryForm from "../../features/deliveries/form/CreateDeliveryForm";
 import CreatePurchaseForm from "../../features/purchases/form/CreatePurchaseForm";
+import CreateProductForm from "../../features/products/form/CreateProductForm";
 import DeliveryDetails from "../../features/deliveries/details/DeliveryDetails";
 import PurchaseDetails from "../../features/purchases/details/PurchaseDetails";
+import ProductDetails from "../../features/products/details/ProductDetails";
+import ProductDashboard from "../../features/products/dashboard/ProductDashboard";
 import NotFound from "./NotFound";
 import EmployeeDashboard from "../../features/employees/dashboard/EmployeeDashboard";
 import EmployeeDetails from "../../features/employees/details/EmployeeDetails";
@@ -29,13 +31,15 @@ const App = () => {
   const purchaseStore = useContext(PurchaseStore);
   const employeeStore = useContext(EmployeeStore);
   const loginStore = useContext(LoginStore);
+  const productStore = useContext(ProductStore)
   const { isEmployeeAuth, isAdminAuth } = loginStore;
 
   useEffect(() => {
     deliveryStore.loadDeliveries();
     purchaseStore.loadPurchases();
     employeeStore.loadEmployees();
-  }, [deliveryStore, purchaseStore,employeeStore]);
+    productStore.loadProducts();
+  }, [deliveryStore, purchaseStore,employeeStore, productStore]);
 
   useEffect(() => {
     console.log("test");
@@ -53,6 +57,8 @@ const App = () => {
     return <LoadingComponent inverted={true} content="Loading purchases..." />;
     if (employeeStore.loadingInitial)
     return <LoadingComponent inverted={true} content="Loading employees..." />;
+    if (productStore.loadingInitial)
+    return <LoadingComponent inverted={true} content="Loading products..." />;
 
 
   return (
@@ -77,6 +83,12 @@ const App = () => {
                 <Route exact path="/purchases" component={PurchaseDashboard} />
                 <Route path="/purchases/:id" component={PurchaseDetails} />
                 <Route path="/createPurchase" component={CreatePurchaseForm} />
+
+                <Route exact path="/products" component={ProductDashboard} />
+                <Route path="/products/:id" component={ProductDetails} />
+                <Route path="/createProduct" component={CreateProductForm} />
+
+
                 <Route exact path="/employees" component={EmployeeDashboard} />
                 <Route path="/employees/:id" component={EmployeeDetails} />                
                 
@@ -84,9 +96,9 @@ const App = () => {
                     path="/createEmployee"
                     component={CreateEmployeeForm}
                 /> }
-                {/* <Route path="/createEmploye" component={CreateEmployeeForm} /> */}
+                
                 <Route component={NotFound} />
-                <Route path="/rootH" component={RootHomePage} />  
+              
               </Switch>
             </Container>
             
